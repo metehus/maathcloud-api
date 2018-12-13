@@ -1,0 +1,15 @@
+DirectoryIndex index.php
+
+ErrorDocument 404 /404.php
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9-]+)$ index.php?request=$1&method=$2
+    RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/$ index.php?request=$1&method=$2
+    RewriteRule ^file/image/([A-Za-z0-9-]+)$ image.php?image=$1
+
+    RewriteRule ^([A-Za-z0-9-]+)$ test.php?img=$1
+    RewriteRule ^([A-Za-z0-9-]+)/$ test.php?img=$1
+</IfModule>
